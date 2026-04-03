@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OrbanRenovierung – Exklusive Renovierung & Innenausbau</title>
+  <meta name="description" content="OrbanRenovierung – Exklusive Renovierung, Innenausbau, Trockenbau, Badsanierung, Bodenbeläge und schlüsselfertige Modernisierung mit premium Anspruch." />
+  <meta name="keywords" content="Renovierung, Innenausbau, Trockenbau, Badsanierung, Bodenbeläge, Malerarbeiten, Stuttgart, Handwerker, Sanierung" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0f0f10;
+      --bg-soft: #161618;
+      --panel: rgba(255,255,255,0.05);
+      --panel-strong: rgba(255,255,255,0.08);
+      --text: #f6f3ea;
+      --muted: #c5c0b4;
+      --line: rgba(255,255,255,0.10);
+      --gold: #c9a84c;
+      --gold-2: #e2c46f;
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius: 24px;
+      --radius-sm: 18px;
+      --max: 1220px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(201,168,76,.10), transparent 30%),
+        radial-gradient(circle at top right, rgba(201,168,76,.08), transparent 25%),
+        linear-gradient(180deg, #111214 0%, #0c0c0d 100%);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: 110px 0; position: relative; }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.3rem);
+      line-height: 1.04;
+      margin: 0 0 18px;
+      letter-spacing: -0.04em;
+    }
+    .section-kicker {
+      color: var(--gold-2);
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-size: .78rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .section-lead {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.06rem;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: .35s ease;
+    }
+    header.scrolled {
+      background: rgba(13,13,14,.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 82px;
+    }
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--gold-2);
+    }
+    .logo span { color: #fff; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,.88);
+      font-weight: 500;
+      position: relative;
+      font-size: .98rem;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -8px;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: .3s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), #b48c2f);
+      color: #111;
+      font-weight: 800;
+      box-shadow: 0 12px 30px rgba(201,168,76,.25);
+    }
+    .burger {
+      display: none;
+      font-size: 1.25rem;
+      background: transparent;
+      color: white;
+      border: 0;
+    }
+
+    .mobile-menu {
+      display: none;
+      padding-bottom: 18px;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu .inner {
+      border-radius: 22px;
+      padding: 16px;
+    }
+    .mobile-menu a {
+      display: block;
+      padding: 14px 8px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      color: white;
+    }
+    .mobile-menu a:last-child { border-bottom: 0; }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      position: relative;
+      isolation: isolate;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(9,9,10,.86) 0%, rgba(9,9,10,.58) 42%, rgba(9,9,10,.38) 100%),
+        url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      z-index: -2;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,10,.25) 0%, rgba(10,10,10,.55) 80%, #0f0f10 100%);
+      z-index: -1;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 34px;
+      align-items: end;
+      padding-top: 120px;
+      padding-bottom: 80px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--gold-2);
+      font-weight: 700;
+      font-size: .82rem;
+      margin-bottom: 22px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 6.2rem);
+      line-height: .95;
+      letter-spacing: -0.06em;
+      margin: 0 0 20px;
+      max-width: 760px;
+    }
+    .hero p {
+      font-size: 1.12rem;
+      line-height: 1.85;
+      color: #dfd8ca;
+      max-width: 700px;
+      margin: 0 0 34px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 34px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 56px;
+      padding: 0 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-2), var(--gold));
+      color: #111;
+      box-shadow: 0 18px 35px rgba(201,168,76,.20);
+    }
+    .btn-secondary {
+      border-color: rgba(255,255,255,.18);
+      color: white;
+      background: rgba(255,255,255,.04);
+    }
+    .hero-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 780px;
+    }
+    .hero-strip .item {
+      padding: 18px 20px;
+      border-radius: 20px;
+      color: #f0ebdf;
+    }
+    .hero-strip .item strong {
+      display: block;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+    .hero-strip .item span {
+      color: #cdc6b8;
+      font-size: .93rem;
+      line-height: 1.55;
+    }
+
+    .hero-card {
+      border-radius: 30px;
+      overflow: hidden;
+      align-self: center;
+    }
+    .hero-card img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+    }
+    .hero-card .content {
+      padding: 24px;
+    }
+    .hero-card .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .badge {
+      color: var(--gold-2);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .rating {
+      color: #fff0ba;
+      font-size: .95rem;
+    }
+    .hero-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.28rem;
+    }
+    .hero-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .98rem;
+      line-height: 1.7;
+    }
+
+    .section-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 42px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .service-card {
+      padding: 28px;
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(201,168,76,.09), transparent 35%);
+      pointer-events: none;
+    }
+    .service-icon {
+      width: 58px;
+      height: 58px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 16px;
+      background: rgba(201,168,76,.12);
+      color: var(--gold-2);
+      font-size: 1.3rem;
+      margin-bottom: 18px;
+    }
+    .service-card h3 {
+      margin: 0 0 14px;
+      font-size: 1.32rem;
+    }
+    .service-card p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .service-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .service-card li {
+      display: flex;
+      gap: 10px;
+      color: #e5ddcf;
+      font-size: .96rem;
+    }
+    .service-card li i {
+      color: var(--gold-2);
+      margin-top: 4px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .project-card {
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      align-items: end;
+    }
+    .project-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+    .project-card:hover img { transform: scale(1.06); }
+    .project-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,10,.05) 0%, rgba(10,10,10,.84) 100%);
+    }
+    .project-card .content {
+      position: relative;
+      z-index: 1;
+      padding: 26px;
+    }
+    .project-card .label {
+      color: var(--gold-2);
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .project-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+    }
+    .project-card p {
+      margin: 0;
+      color: #ded8cc;
+      line-height: 1.7;
+      font-size: .98rem;
+    }
+
+    .stats {
+      padding: 34px;
+      border-radius: 30px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .stat {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.05);
+      text-align: center;
+    }
+    .stat .num {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--gold-2);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .stat .label {
+      color: #e5dece;
+      font-weight: 600;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .about-image {
+      border-radius: 30px;
+      overflow: hidden;
+      position: relative;
+    }
+    .about-image img {
+      height: 640px;
+      width: 100%;
+      object-fit: cover;
+    }
+    .about-panel {
+      padding: 36px;
+      border-radius: 30px;
+    }
+    .about-panel p {
+      color: var(--muted);
+      line-height: 1.85;
+      margin: 0 0 18px;
+    }
+    .usp-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 26px;
+    }
+    .usp {
+      display: flex;
+      gap: 12px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      color: #efe8db;
+      font-weight: 600;
+    }
+    .usp i { color: var(--gold-2); margin-top: 2px; }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .testimonial {
+      padding: 28px;
+      border-radius: 26px;
+    }
+    .stars {
+      color: #ffe08a;
+      margin-bottom: 16px;
+    }
+    .testimonial p {
+      color: #e1dccc;
+      line-height: 1.8;
+      margin: 0 0 18px;
+    }
+    .testimonial strong { display: block; }
+    .testimonial span { color: var(--muted); font-size: .95rem; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .contact-info,
+    .form-wrap {
+      padding: 30px;
+      border-radius: 28px;
+    }
+    .info-list {
+      display: grid;
+      gap: 16px;
+      margin: 26px 0 0;
+    }
+    .info-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .info-item i {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(201,168,76,.12);
+      color: var(--gold-2);
+      flex: 0 0 auto;
+    }
+    .info-item strong { display: block; margin-bottom: 4px; }
+    .info-item span { color: var(--muted); line-height: 1.6; }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    input, select, textarea {
+      width: 100%;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 16px 18px;
+      color: white;
+      font: inherit;
+      outline: none;
+      transition: border-color .25s ease, transform .2s ease;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(201,168,76,.7);
+      transform: translateY(-1px);
+    }
+    textarea { min-height: 150px; resize: vertical; }
+    select option { color: #111; }
+    .form-note {
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.7;
+      margin-top: 4px;
+    }
+    .success {
+      display: none;
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(96, 181, 116, .12);
+      border: 1px solid rgba(96, 181, 116, .35);
+      color: #d8f0db;
+      font-weight: 600;
+    }
+
+    footer {
+      padding: 32px 0 50px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .footer-grid p { color: var(--muted); line-height: 1.8; }
+    .footer-links { display: grid; gap: 10px; }
+    .footer-links a { color: #ece4d6; }
+    .socials { display: flex; gap: 12px; margin-top: 16px; }
+    .socials a {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    .copyright {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1200;
+      padding: 20px;
+    }
+    .modal.open { display: flex; }
+    .modal-card {
+      width: min(760px, 100%);
+      max-height: 82vh;
+      overflow: auto;
+      border-radius: 26px;
+      padding: 28px;
+    }
+    .modal-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .modal h3 { margin: 0; font-size: 1.5rem; }
+    .modal p, .modal li {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .close-btn {
+      border: 0;
+      background: rgba(255,255,255,.06);
+      color: white;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .footer-grid,
+      .section-top {
+        grid-template-columns: 1fr;
+      }
+      .services-grid,
+      .project-grid,
+      .testimonials,
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hero-card img { height: 420px; }
+      .about-image img { height: 500px; }
+    }
+
+    @media (max-width: 760px) {
+      .nav-links, .nav-cta { display: none; }
+      .burger { display: inline-block; }
+      .hero { min-height: auto; }
+      .hero-grid { padding-top: 120px; }
+      .hero h1 { font-size: clamp(2.5rem, 14vw, 4rem); }
+      .hero-strip,
+      .services-grid,
+      .project-grid,
+      .stats,
+      .usp-list,
+      .testimonials,
+      .form-row { grid-template-columns: 1fr; }
+      .section { padding: 86px 0; }
+      .hero-card img { height: 300px; }
+      .about-image img { height: 360px; }
+      .contact-info,
+      .form-wrap,
+      .about-panel,
+      .service-card,
+      .testimonial,
+      .hero-card .content,
+      .stats { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="container nav">
+      <a href="#home" class="logo">Orban<span>Renovierung</span></a>
+      <nav class="nav-links">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#projekte">Projekte</a>
+        <a href="#ueber-uns">Über uns</a>
+        <a href="#referenzen">Referenzen</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <a href="#kontakt" class="nav-cta"><i class="fa-solid fa-paper-plane"></i> Kostenlos anfragen</a>
+      <button class="burger" id="burger" aria-label="Menü öffnen"><i class="fa-solid fa-bars"></i></button>
+    </div>
+    <div class="container mobile-menu" id="mobileMenu">
+      <div class="inner glass">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#projekte">Projekte</a>
+        <a href="#ueber-uns">Über uns</a>
+        <a href="#referenzen">Referenzen</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="reveal visible">
+          <div class="eyebrow"><i class="fa-solid fa-gem"></i> Exklusive Renovierung & Innenausbau</div>
+          <h1>Ihr Zuhause. <br>Neu gedacht.</h1>
+          <p>OrbanRenovierung steht für stilvolle Modernisierung, präzises Handwerk und einen Auftritt, der Qualität bereits auf den ersten Blick sichtbar macht. Von Trockenbau bis Komplettsanierung liefern wir Ergebnisse mit Anspruch, Struktur und Charakter.</p>
+          <div class="hero-actions">
+            <a href="#kontakt" class="btn btn-primary"><i class="fa-solid fa-phone-volume"></i> Kostenlos anfragen</a>
+            <a href="#leistungen" class="btn btn-secondary"><i class="fa-solid fa-arrow-down"></i> Unsere Leistungen</a>
+          </div>
+          <div class="hero-strip">
+            <div class="item glass">
+              <strong>Premium-Ausführung</strong>
+              <span>Saubere Umsetzung, klare Abläufe und hochwertige Oberflächen bis ins Detail.</span>
+            </div>
+            <div class="item glass">
+              <strong>Feste Ansprechpartner</strong>
+              <span>Direkte Kommunikation, transparente Planung und verlässliche Terminabstimmung.</span>
+            </div>
+            <div class="item glass">
+              <strong>Alles aus einer Hand</strong>
+              <span>Ein Ansprechpartner für Innenausbau, Renovierung und schlüsselfertige Modernisierung.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card glass reveal">
+          <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80" alt="Modern renovierter Wohnraum">
+          <div class="content">
+            <div class="top">
+              <div class="badge">Signature Project</div>
+              <div class="rating"><i class="fa-solid fa-star"></i> 5.0</div>
+            </div>
+            <h3>Wohnraum mit Hotel-Charakter</h3>
+            <p>Edle Materialien, harmonische Farben und ein durchdachter Ausbau für ein Ergebnis, das modern, hochwertig und dauerhaft beeindruckend wirkt.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="leistungen">
+      <div class="container">
+        <div class="section-top reveal">
+          <div>
+            <div class="section-kicker">Leistungen</div>
+            <h2 class="section-title">Was wir für Sie auf Premium-Niveau umsetzen</h2>
+            <p class="section-lead">Jede Leistung ist auf hochwertige Ergebnisse, saubere Abwicklung und eine starke Gesamtwirkung ausgerichtet – technisch sauber, optisch überzeugend und professionell koordiniert.</p>
+          </div>
+          <a href="#kontakt" class="btn btn-secondary">Projekt besprechen</a>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card glass reveal">
+            <div class="service-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <h3>Trockenbau</h3>
+            <p>Moderne Raumlösungen mit präzisen Wänden, Decken und Verkleidungen für klare Linien, bessere Nutzung und ein sauberes Finish.</p>
+            <ul>
+              <li><i class="fa-solid fa-check"></i><span>Ständerwände, Vorsatzschalen und Deckenabhängungen</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Brandschutz- und Schallschutzlösungen</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Perfekte Vorbereitung für Licht, Farbe und Ausbau</span></li>
+            </ul>
+          </article>
+
+          <article class="service-card glass reveal">
+            <div class="service-icon"><i class="fa-solid fa-door-open"></i></div>
+            <h3>Fenster & Türen</h3>
+            <p>Passgenauer Einbau mit Fokus auf Dichtheit, Optik und eine wertige Wirkung im Gesamtbild des Objekts.</p>
+            <ul>
+              <li><i class="fa-solid fa-check"></i><span>Einbau und Austausch moderner Elemente</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Saubere Abdichtung und Anschlussarbeiten</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Aufwertung von Komfort und Energieeffizienz</span></li>
+            </ul>
+          </article>
+
+          <article class="service-card glass reveal">
+            <div class="service-icon"><i class="fa-solid fa-paint-roller"></i></div>
+            <h3>Malerarbeiten</h3>
+            <p>Feine Oberflächen und starke Farbbilder für Räume, die ruhig, edel und professionell gestaltet wirken.</p>
+            <ul>
+              <li><i class="fa-solid fa-check"></i><span>Innen- und Außenanstriche mit hochwertiger Wirkung</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Spachtel-, Schleif- und Vorbereitungsarbeiten</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Saubere Details an Kanten, Flächen und Übergängen</span></li>
+            </ul>
+          </article>
+
+          <article class="service-card glass reveal">
+            <div class="service-icon"><i class="fa-solid fa-border-all"></i></div>
+            <h3>Bodenbeläge</h3>
+            <p>Beläge mit Stil, Präzision und langlebiger Verlegung – abgestimmt auf Nutzung, Raumgefühl und Wertigkeit.</p>
+            <ul>
+              <li><i class="fa-solid fa-check"></i><span>Parkett, Laminat, Vinyl und Fliesen</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Exakte Untergrundvorbereitung und saubere Abschlüsse</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Optisch stimmige Übergänge für ein ruhiges Gesamtbild</span></li>
+            </ul>
+          </article>
+
+          <article class="service-card glass reveal">
+            <div class="service-icon"><i class="fa-solid fa-bath"></i></div>
+            <h3>Badezimmer</h3>
+            <p>Komplett modernisierte Bäder mit klarer Gestaltung, funktionalem Aufbau und hochwertiger Materialwirkung.</p>
+            <ul>
+              <li><i class="fa-solid fa-check"></i><span>Komplettsanierung und Neuaufteilung</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Fliesen, Installationen und moderne Ausstattung</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Designorientierte Lösungen mit Komfortanspruch</span></li>
+            </ul>
+          </article>
+
+          <article class="service-card glass reveal">
+            <div class="service-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+            <h3>Komplettrenovierung</h3>
+            <p>Durchgängige Modernisierung mit starker Koordination, klaren Abläufen und einem Ergebnis wie aus einem Guss.</p>
+            <ul>
+              <li><i class="fa-solid fa-check"></i><span>Planung, Ausbau und Fertigstellung aus einer Hand</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Hochwertige Umsetzung für Wohnungen und Häuser</span></li>
+              <li><i class="fa-solid fa-check"></i><span>Schlüsselfertige Übergabe mit premium Eindruck</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projekte">
+      <div class="container">
+        <div class="section-top reveal">
+          <div>
+            <div class="section-kicker">Projekte</div>
+            <h2 class="section-title">Bilder, die Qualität direkt sichtbar machen</h2>
+            <p class="section-lead">Ausgewählte Bildwelten mit hochwertigem Look – passend zu exklusiver Renovierung, modernem Innenausbau und stilvoller Aufwertung von Wohnraum.</p>
+          </div>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card reveal">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80" alt="Vorher Nachher Wohnzimmer Renovierung">
+            <div class="content">
+              <div class="label">Vorher / Nachher</div>
+              <h3>Wohnzimmer Modernisierung</h3>
+              <p>Mehr Licht, klarere Linien und ein hochwertiger Gesamteindruck durch gezielte Aufwertung von Wänden, Böden und Details.</p>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1200&q=80" alt="Badezimmer Renovierung Design">
+            <div class="content">
+              <div class="label">Design Bad</div>
+              <h3>Badezimmer mit Luxus-Charakter</h3>
+              <p>Moderne Fliesen, klare Formen und hochwertige Materialwirkung für ein Bad, das funktional und exklusiv zugleich wirkt.</p>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80" alt="Moderner Innenausbau Wohnbereich">
+            <div class="content">
+              <div class="label">Innenausbau</div>
+              <h3>Stilvoller Wohnbereich</h3>
+              <p>Ausbau mit harmonischen Farben, hochwertigem Bodenbild und einer Wirkung, die modern und langlebig überzeugt.</p>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80" alt="Küche renoviert modern">
+            <div class="content">
+              <div class="label">Küchenrenovierung</div>
+              <h3>Moderne Küche neu inszeniert</h3>
+              <p>Ein frischer, eleganter Auftritt mit hochwertigen Oberflächen und präzisen Übergängen im gesamten Raumkonzept.</p>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80" alt="Bodenbelag hochwertig verlegt">
+            <div class="content">
+              <div class="label">Bodenbild</div>
+              <h3>Exklusive Bodenverlegung</h3>
+              <p>Ruhige Flächen, exakte Abschlüsse und Materialien, die Komfort, Design und Wertigkeit verbinden.</p>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <img src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=1200&q=80" alt="Trockenbau Innenausbau professionell">
+            <div class="content">
+              <div class="label">Trockenbau</div>
+              <h3>Raumstruktur mit Präzision</h3>
+              <p>Saubere Konstruktion und modernes Raumgefühl durch professionell geplante und hochwertig ausgeführte Trockenbaulösungen.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="stats glass reveal">
+          <div class="stat">
+            <div class="num" data-target="250">0</div>
+            <div class="label">abgeschlossene Projekte</div>
+          </div>
+          <div class="stat">
+            <div class="num" data-target="98">0</div>
+            <div class="label">zufriedene Kunden in %</div>
+          </div>
+          <div class="stat">
+            <div class="num" data-target="10">0</div>
+            <div class="label">Jahre Erfahrung</div>
+          </div>
+          <div class="stat">
+            <div class="num" data-target="15">0</div>
+            <div class="label">Fachkräfte im Team</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="ueber-uns">
+      <div class="container about-grid">
+        <div class="about-image glass reveal">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80" alt="Handwerker bei hochwertiger Innenausbau Arbeit">
+        </div>
+        <div class="about-panel glass reveal">
+          <div class="section-kicker">Über uns</div>
+          <h2 class="section-title">Erfahrung, die man sieht</h2>
+          <p>OrbanRenovierung verbindet handwerkliche Substanz mit einem klaren Anspruch an Ästhetik, Präzision und Verlässlichkeit. Unser Fokus liegt nicht nur auf sauberer Arbeit, sondern auf einem Ergebnis, das Räume sichtbar aufwertet.</p>
+          <p>Als regional verwurzelter Betrieb setzen wir auf direkte Kommunikation, strukturierte Abläufe und eine Ausführung, die professionell, hochwertig und termintreu bleibt. Jedes Projekt wird mit Blick auf Wirkung, Alltagstauglichkeit und langlebige Qualität umgesetzt.</p>
+          <p>Ob einzelne Gewerke oder komplette Modernisierung: Wir denken nicht in halben Lösungen, sondern in einem fertigen Ergebnis, das stimmig, stark und hochwertig wirkt.</p>
+
+          <div class="usp-list">
+            <div class="usp"><i class="fa-solid fa-check-circle"></i><span>Festpreisgarantie</span></div>
+            <div class="usp"><i class="fa-solid fa-check-circle"></i><span>Kostenlose Erstberatung</span></div>
+            <div class="usp"><i class="fa-solid fa-check-circle"></i><span>Alle Gewerke aus einer Hand</span></div>
+            <div class="usp"><i class="fa-solid fa-check-circle"></i><span>Zertifizierte Fachbetriebe</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="referenzen">
+      <div class="container">
+        <div class="section-top reveal">
+          <div>
+            <div class="section-kicker">Referenzen</div>
+            <h2 class="section-title">Was unsere Kunden sagen</h2>
+            <p class="section-lead">Ein hochwertiger Eindruck entsteht nicht nur durch Bilder, sondern vor allem durch das Gefühl nach Fertigstellung: klar, sauber, zuverlässig und sichtbar professionell.</p>
+          </div>
+        </div>
+
+        <div class="testimonials">
+          <article class="testimonial glass reveal">
+            <div class="stars"><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i></div>
+            <p>„Vom ersten Gespräch bis zur Fertigstellung war alles auf einem extrem professionellen Niveau. Die Wohnung wirkt heute hochwertiger, größer und deutlich moderner.“</p>
+            <strong>Michael S.</strong>
+            <span>Stuttgart</span>
+          </article>
+
+          <article class="testimonial glass reveal">
+            <div class="stars"><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i></div>
+            <p>„Besonders beeindruckt hat uns die saubere Ausführung und wie hochwertig jedes Detail umgesetzt wurde. Genau die Art von Firma, die man weiterempfiehlt.“</p>
+            <strong>Sabine K.</strong>
+            <span>Ludwigsburg</span>
+          </article>
+
+          <article class="testimonial glass reveal">
+            <div class="stars"><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i></div>
+            <p>„Unser Bad und der Wohnbereich wirken jetzt wie aus einem Design-Magazin. Kommunikation, Termine und Ergebnis waren stark organisiert und absolut überzeugend.“</p>
+            <strong>Daniel R.</strong>
+            <span>Esslingen</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kontakt">
+      <div class="container contact-grid">
+        <div class="contact-info glass reveal">
+          <div class="section-kicker">Kontakt</div>
+          <h2 class="section-title">Lassen Sie uns Ihr Projekt besprechen</h2>
+          <p class="section-lead">Füllen Sie das Formular aus. Beim Absenden öffnet sich Ihre Mail-App automatisch mit allen eingetragenen Daten an <strong>levisionv699@gmail.com</strong>.</p>
+
+          <div class="info-list">
+            <div class="info-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <div><strong>Adresse</strong><span>Musterstraße 12, 70000 Stuttgart</span></div>
+            </div>
+            <div class="info-item">
+              <i class="fa-solid fa-phone"></i>
+              <div><strong>Telefon</strong><span>+49 711 123456</span></div>
+            </div>
+            <div class="info-item">
+              <i class="fa-solid fa-envelope"></i>
+              <div><strong>E-Mail</strong><span>levisionv699@gmail.com</span></div>
+            </div>
+            <div class="info-item">
+              <i class="fa-regular fa-clock"></i>
+              <div><strong>Öffnungszeiten</strong><span>Mo – Fr · 07:00 – 18:00 Uhr</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-wrap glass reveal">
+          <form id="contactForm">
+            <div class="form-row">
+              <input type="text" name="name" placeholder="Ihr Name" required>
+              <input type="text" name="phone" placeholder="Telefon" required>
+            </div>
+            <div class="form-row">
+              <input type="email" name="email" placeholder="E-Mail-Adresse" required>
+              <select name="service" required>
+                <option value="">Leistung wählen</option>
+                <option>Trockenbau</option>
+                <option>Fenster & Türen</option>
+                <option>Malerarbeiten</option>
+                <option>Bodenbeläge</option>
+                <option>Badezimmer</option>
+                <option>Komplettrenovierung</option>
+              </select>
+            </div>
+            <textarea name="message" placeholder="Beschreiben Sie Ihr Projekt"></textarea>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Jetzt anfragen</button>
+            <div class="form-note">Kostenlose Erstberatung – wir melden uns schnellstmöglich zurück. Beim lokalen Öffnen der Website wird Ihre Mail-App mit vorausgefüllter Anfrage geöffnet.</div>
+            <div class="success" id="successMsg">Ihre Mail-App wurde geöffnet. Bitte prüfen Sie die Nachricht und klicken Sie auf „Senden“.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo">Orban<span>Renovierung</span></div>
+          <p>Exklusive Renovierung, hochwertiger Innenausbau und professionelle Modernisierung mit starkem Designanspruch und sauberer Umsetzung.</p>
+          <div class="socials">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
+        </div>
+        <div>
+          <strong>Navigation</strong>
+          <div class="footer-links" style="margin-top:14px;">
+            <a href="#leistungen">Leistungen</a>
+            <a href="#projekte">Projekte</a>
+            <a href="#ueber-uns">Über uns</a>
+            <a href="#kontakt">Kontakt</a>
+          </div>
+        </div>
+        <div>
+          <strong>Rechtliches</strong>
+          <div class="footer-links" style="margin-top:14px;">
+            <a href="#" data-modal="impressum">Impressum</a>
+            <a href="#" data-modal="datenschutz">Datenschutz</a>
+            <a href="#" data-modal="agb">AGB</a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">© 2025 OrbanRenovierung – Alle Rechte vorbehalten</div>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal">
+    <div class="modal-card glass">
+      <div class="modal-top">
+        <h3 id="modalTitle">Impressum</h3>
+        <button class="close-btn" id="closeModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script>
+    const header = document.getElementById('header');
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const revealEls = document.querySelectorAll('.reveal');
+    const statEls = document.querySelectorAll('.num');
+    const contactForm = document.getElementById('contactForm');
+    const successMsg = document.getElementById('successMsg');
+
+    function handleHeader() {
+      if (window.scrollY > 20) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    }
+    handleHeader();
+    window.addEventListener('scroll', handleHeader);
+
+    burger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    let statsStarted = false;
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !statsStarted) {
+          statsStarted = true;
+          statEls.forEach(el => animateCount(el, Number(el.dataset.target)));
+        }
+      });
+    }, { threshold: 0.35 });
+
+    const statsWrap = document.querySelector('.stats');
+    if (statsWrap) statsObserver.observe(statsWrap);
+
+    function animateCount(el, target) {
+      let current = 0;
+      const step = Math.max(1, Math.ceil(target / 60));
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        el.textContent = current + (target === 98 ? '%' : '+');
+      }, 24);
+    }
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const data = new FormData(contactForm);
+      const name = encodeURIComponent(data.get('name') || '');
+      const phone = encodeURIComponent(data.get('phone') || '');
+      const email = encodeURIComponent(data.get('email') || '');
+      const service = encodeURIComponent(data.get('service') || '');
+      const message = encodeURIComponent(data.get('message') || '');
+
+      const subject = encodeURIComponent('Neue Anfrage über OrbanRenovierung Website');
+      const body =
+        'Name: ' + name + '%0D%0A' +
+        'Telefon: ' + phone + '%0D%0A' +
+        'E-Mail: ' + email + '%0D%0A' +
+        'Leistung: ' + service + '%0D%0A%0D%0A' +
+        'Nachricht:%0D%0A' + message;
+
+      window.location.href = 'mailto:levisionv699@gmail.com?subject=' + subject + '&body=' + body;
+      successMsg.style.display = 'block';
+    });
+
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalContent');
+    const closeModal = document.getElementById('closeModal');
+
+    const modalData = {
+      impressum: {
+        title: 'Impressum',
+        content: `
+          <p><strong>OrbanRenovierung</strong><br>Musterstraße 12<br>70000 Stuttgart</p>
+          <p><strong>Vertreten durch:</strong><br>Inhaber Max Mustermann</p>
+          <p><strong>Kontakt:</strong><br>Telefon: +49 711 123456<br>E-Mail: levisionv699@gmail.com</p>
+          <p><strong>Hinweis:</strong> Diese Angaben sind noch Platzhalter und sollten vor einer echten Veröffentlichung mit den korrekten Firmendaten ersetzt werden.</p>
+        `
+      },
+      datenschutz: {
+        title: 'Datenschutz',
+        content: `
+          <p>Der Schutz Ihrer Daten ist uns wichtig. Personenbezogene Daten, die Sie über das Kontaktformular eingeben, werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.</p>
+          <p>Beim lokalen Öffnen der Website wird Ihre E-Mail-Anwendung über einen mailto-Link geöffnet. In diesem Fall erfolgt keine direkte Speicherung über diese Website.</p>
+          <p>Vor dem echten Live-Gang sollte eine vollständige, rechtssichere Datenschutzerklärung mit allen eingesetzten Diensten ergänzt werden.</p>
+        `
+      },
+      agb: {
+        title: 'AGB',
+        content: `
+          <p>Unsere Leistungen erfolgen auf Grundlage individueller Vereinbarungen, Angebote und Absprachen zum jeweiligen Projekt.</p>
+          <ul>
+            <li>Angebote sind freibleibend, sofern nicht anders vereinbart.</li>
+            <li>Leistungsumfang und Preise ergeben sich aus dem jeweiligen Angebot.</li>
+            <li>Abweichungen und Zusatzleistungen werden gesondert abgestimmt.</li>
+          </ul>
+          <p>Diese AGB sind Platzhalter und sollten vor einer echten geschäftlichen Nutzung juristisch geprüft oder ersetzt werden.</p>
+        `
+      }
+    };
+
+    document.querySelectorAll('[data-modal]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const key = link.dataset.modal;
+        const entry = modalData[key];
+        if (!entry) return;
+        modalTitle.textContent = entry.title;
+        modalContent.innerHTML = entry.content;
+        modal.classList.add('open');
+      });
+    });
+
+    closeModal.addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('open');
+    });
+  </script>
+</body>
+</html>
